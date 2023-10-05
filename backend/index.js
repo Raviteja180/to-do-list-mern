@@ -16,7 +16,7 @@ app.use(
 );
 app.use(express.json());
 mongoose.connect(
-  "mongodb+srv://Raviteja180:Raviteja180@cluster1.dusxcml.mongodb.net/forms?retryWrites=true&w=majority",
+  "mongodb+srv://Raviteja180:Raviteja180@cluster1.dusxcml.mongodb.net/todos?retryWrites=true&w=majority",
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
