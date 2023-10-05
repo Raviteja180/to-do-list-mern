@@ -7,7 +7,7 @@ function App() {
     console.log(taskname);
     setListOfAllTasks([...listOfAllTasks, taskname]);
     axios
-      .post("https://to-do-list-mern-nine.vercel.app/", { taskname })
+      .post("https://to-do-list-mern-nine.vercel.app/api", { taskname })
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
   };
