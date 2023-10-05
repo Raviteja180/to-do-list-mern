@@ -9,7 +9,7 @@ app.listen(3001, () => {
 });
 app.use(
   cors({
-    origin: "https://mern-stack-deployment2-frontend.vercel.app",
+    origin: "https://to-do-list-mern-frontend2.vercel.app",
     methods: ["GET", "POST"],
     credentials: true,
   })
@@ -41,7 +41,7 @@ app.post("/api", (req, res) => {
   console.log(req.body);
   // res.send(req.body);
   // console.log(req.body);
-  const { username } = req.body;
+  const { taskname } = req.body;
   // res.send(username);
   // const dataDoc = new data({ name: username });
   // dataDoc
@@ -51,7 +51,7 @@ app.post("/api", (req, res) => {
   //     console.log(err);
   //   });
   data
-    .create({ name: username })
+    .create({ taskname: taskname })
     .then((result) => res.json(result))
     .catch((error) => res.json(error));
 });
