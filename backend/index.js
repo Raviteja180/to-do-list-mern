@@ -30,10 +30,10 @@ mongoose.connection.on("error", (err) => {
 });
 
 const schema = {
-  name: String,
+  taskname: String,
 };
 
-const data = mongoose.model("userdetails", schema);
+const data = mongoose.model("listOfAllTasks", schema);
 app.get("/", function (req, res) {
   res.send("express is working and everything is fine for now");
 });

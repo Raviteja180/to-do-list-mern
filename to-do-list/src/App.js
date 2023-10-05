@@ -6,6 +6,7 @@ function App() {
   const addTaskToAllTasks = (taskname) => {
     console.log(taskname);
     setListOfAllTasks([...listOfAllTasks, taskname]);
+    axios.defaults.withCredentials = true;
     axios
       .post("https://to-do-list-mern-nine.vercel.app/api", { taskname })
       .then((res) => console.log(res))
