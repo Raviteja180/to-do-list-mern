@@ -9,8 +9,9 @@ app.listen(3001, () => {
 });
 app.use(
   cors({
-    origin: "https://to-do-list-mern-frontend2.vercel.app",
-    methods: ["GET", "POST"],
+    // origin: "https://to-do-list-mern-frontend2.vercel.app",
+    origin: "http://localhost:3000",
+    methods: ["GET", "POST", "DELETE"],
     credentials: true,
   })
 );
@@ -37,7 +38,7 @@ const data = mongoose.model("listOfAllTasks", schema);
 app.get("/", function (req, res) {
   res.send("express is working and everything is fine for now");
 });
-app.post("/api", (req, res) => {
+app.post("/addTask", (req, res) => {
   console.log(req.body);
   // res.send(req.body);
   // console.log(req.body);
@@ -54,4 +55,20 @@ app.post("/api", (req, res) => {
     .create({ taskname: taskname })
     .then((result) => res.json(result))
     .catch((error) => res.json(error));
+});
+app.delete("/deleteTask/:id", async (req, res) => {
+  console.log(req);
+  const itemId = req.params.id;
+  // res.json(itemId);
+
+  const item = await data.findById(itemId);
+  if (item) {
+    // res.status(200).json(item);
+    await data.findByIdAndRemove(itemId);
+    // res.status(200).json({ message: "success" });
+    let alldata = await data.find();
+    res.send(alldata);
+  } else {
+    res.json({ message: "not found" });
+  }
 });
